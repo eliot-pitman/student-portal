@@ -2,6 +2,9 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
+
+    <h1>This is Eliot's comment!!!!!</h1>
+
     <p>I put stuff here</p>
   </div>
 </template>
