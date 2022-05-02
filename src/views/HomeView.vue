@@ -7,6 +7,7 @@
 
     <p>I put stuff here</p>
   </div>
+  <p>here is a change</p>
 </template>
 
 <script>
