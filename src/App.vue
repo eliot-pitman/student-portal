@@ -7,7 +7,12 @@
     <router-link to="/login">Login</router-link>
     |
     <router-link to="/index">Index</router-link>
+    |
     <router-link to="/logout">Logout</router-link>
+    |
+    <router-link to="/create">Create Info</router-link>
+    |
+    <router-link to="/edit">Edit Info</router-link>
   </nav>
   <router-view />
 </template>
