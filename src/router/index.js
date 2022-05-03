@@ -34,6 +34,11 @@ const routes = [
     name: "logout",
     component: LogOut,
   },
+  {
+    path: "/students/:id",
+    name: "students-show",
+    component: StudentShow,
+  },
 ];
 
 const router = createRouter({
