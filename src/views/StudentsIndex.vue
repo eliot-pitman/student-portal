@@ -3,14 +3,13 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      data: [],
+      students: [],
     };
   },
   created: function () {
-    //  update get request url when we get route from backend people
-    axios.get("http://localhost:3000/something.json").then((response) => {
-      this.data = response.data;
-      console.log("", this.data);
+    axios.get("http://localhost:3000/students.json").then((response) => {
+      this.students = response.data;
+      console.log("All Students", this.students);
     });
   },
 };
