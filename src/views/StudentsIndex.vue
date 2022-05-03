@@ -5,14 +5,40 @@ export default {
     return {
       data: [],
       student: {},
+      students: [],
     };
   },
   created: function () {
-    //  update get request url when we get route from backend people
-    axios.get("http://localhost:3000/something.json").then((response) => {
-      this.data = response.data;
-      console.log("", this.data);
+    axios.get("http://localhost:3000/students.json").then((response) => {
+      this.students = response.data;
+      console.log("All Students", this.students);
     });
+  },
+  methods: {
+    destroyExperience: function () {
+      axios.delete("/" + experience.id).then((response) => {
+        console.log("experience removed", response);
+        this.$router.push("/");
+      });
+    },
+    destroyEducation: function () {
+      axios.delete("/" + education.id).then((response) => {
+        console.log("education removed", response);
+        this.$router.push("/");
+      });
+    },
+    destroySkill: function () {
+      axios.delete("/" + skill.id).then((response) => {
+        console.log("skill removed", response);
+        this.$router.push("/");
+      });
+    },
+    destroyCapstone: function () {
+      axios.delete("/" + capstone.id).then((response) => {
+        console.log("capstone removed", response);
+        this.$router.push("/");
+      });
+    },
   },
 };
 </script>
