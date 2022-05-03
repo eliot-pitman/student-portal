@@ -9,6 +9,10 @@
     <router-link to="/index">Index</router-link>
     |
     <router-link to="/logout">Logout</router-link>
+    |
+    <router-link to="/create">Logout</router-link>
+    |
+    <router-link to="/edit">Logout</router-link>
   </nav>
   <router-view />
 </template>
