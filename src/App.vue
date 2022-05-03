@@ -6,7 +6,8 @@
     |
     <router-link to="/login">Login</router-link>
     |
-    <router-link to="/Index">Index</router-link>
+    <router-link to="/index">Index</router-link>
+    <router-link to="/logout">Logout</router-link>
   </nav>
   <router-view />
 </template>
