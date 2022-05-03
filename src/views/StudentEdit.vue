@@ -8,6 +8,8 @@ export default {
       students: [],
       experienceParams: {},
       skillsParams: {},
+      educationParams: {},
+      capstoneParams: {},
       status: "",
       error: false,
       experience: {},
@@ -83,11 +85,65 @@ export default {
 
   <br />
   <form v-on:submit.prevent="updateSkill()">
-    <h1>Add Skill</h1>
+    <h1>Update Skill</h1>
     <div>
       Skill:
       <input type="text" v-model="skillsParams.name" />
     </div>
+    <div>
+      <input type="submit" value="Update" />
+    </div>
   </form>
   <button v-on:click="destroySkill(skill)">Delete skill</button>
+
+  <br />
+  <form v-on:submit.prevent="updateEducation()">
+    <h1>Update Education</h1>
+    <div>
+      Degree:
+      <input type="text" v-model="educationParams.degree" />
+    </div>
+    <div>
+      University Name:
+      <input type="text" v-model="educationParams.university_name" />
+    </div>
+    <div>
+      Start date:
+      <input type="text" v-model="educationParams.start_date" />
+    </div>
+    <div>
+      End date:
+      <input type="text" v-model="educationParams.end_date" />
+    </div>
+    <div>
+      Details:
+      <input type="text" v-model="educationParams.details" />
+    </div>
+
+    <div>
+      <input type="submit" value="Update" />
+    </div>
+  </form>
+  <button v-on:click="destroyEducation(education)">Delete education</button>
+
+  <br />
+  <form v-on:submit.prevent="updateEducation()">
+    <h1>Update Capstone</h1>
+    <div>
+      Name:
+      <input type="text" v-model="capstoneParams.name" />
+    </div>
+    <div>
+      Description:
+      <input type="text" v-model="capstoneParams.description" />
+    </div>
+    <div>
+      URL:
+      <input type="text" v-model="capstoneParams.url" />
+    </div>
+    <div>
+      <input type="submit" value="Update" />
+    </div>
+  </form>
+  <button v-on:click="destroyCapstone(capstone)">Delete capstone</button>
 </template>
