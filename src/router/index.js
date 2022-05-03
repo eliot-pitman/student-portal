@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LogIn from "../views/LogIn.vue";
-import StudentsIndex from "../views/StudentsIndex.vue";
 import LogOut from "../views/LogOut.vue";
 import StudentShow from "../views/StudentShow.vue";
 import StudentCreate from "../views/StudentCreate.vue";
@@ -25,11 +24,6 @@ const routes = [
     path: "/login",
     name: "login",
     component: LogIn,
-  },
-  {
-    path: "/index",
-    name: "index",
-    component: StudentsIndex,
   },
   {
     path: "/logout",
