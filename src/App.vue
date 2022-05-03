@@ -10,9 +10,9 @@
     |
     <router-link to="/logout">Logout</router-link>
     |
-    <router-link to="/create">Logout</router-link>
+    <router-link to="/create">Create Info</router-link>
     |
-    <router-link to="/edit">Logout</router-link>
+    <router-link to="/edit">Edit Info</router-link>
   </nav>
   <router-view />
 </template>
