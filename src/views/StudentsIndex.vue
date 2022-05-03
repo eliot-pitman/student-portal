@@ -4,13 +4,39 @@ export default {
   data: function () {
     return {
       students: [],
+      educationParams: [],
+      capstoneParams: [],
+      status: "",
+      error: false,
+      capstone: [],
     };
   },
-  created: function () {
-    axios.get("http://localhost:3000/students.json").then((response) => {
-      this.students = response.data;
-      console.log("All Students", this.students);
-    });
+  created: function () {},
+  methods: {
+    educationCreate: function () {
+      axios
+        .post("/education", this.educationParams)
+        .then((response) => {
+          this.status = response.data;
+          console.log("Education created", this.educationParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
+    capstoneCreate: function () {
+      axios
+        .post("/capstone", this.capstoneParams)
+        .then((response) => {
+          this.status = response.data;
+          console.log("Capstone created", this.educationParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
   },
 };
 </script>
