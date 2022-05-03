@@ -6,6 +6,10 @@ export default {
       data: [],
       student: {},
       students: [],
+      experienceParams: {},
+      skillsParams: {},
+      status: "",
+      error: false,
     };
   },
   created: function () {
@@ -15,6 +19,28 @@ export default {
     });
   },
   methods: {
+    experienceCreate: function () {
+      axios
+        .post("/experience", this.experienceParams)
+        .then((response) => {
+          console.log("experience successfully created", response.data, this.experienceParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
+    skillsCreate: function () {
+      axios
+        .post("/skills", this.skillsParams)
+        .then((response) => {
+          console.log("skills successfully created", response.data, this.skillsParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
     destroyExperience: function () {
       axios.delete("/" + experience.id).then((response) => {
         console.log("experience removed", response);
