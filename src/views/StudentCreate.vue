@@ -15,15 +15,15 @@ export default {
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/students.json").then((response) => {
-      this.students = response.data;
-      console.log("All Students", this.students);
-    });
+    // axios.get("http://localhost:3000/students.json").then((response) => {
+    //   this.students = response.data;
+    //   console.log("All Students", this.students);
+    // });
   },
   methods: {
     experienceCreate: function () {
       axios
-        .post("/experience", this.experienceParams)
+        .post("http://localhost:3000/experience.json", this.experienceParams)
         .then((response) => {
           console.log("experience successfully created", response.data, this.experienceParams);
         })
