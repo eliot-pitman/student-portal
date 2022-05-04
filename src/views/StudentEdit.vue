@@ -21,16 +21,16 @@ export default {
   created: function () {
     axios.get("http://localhost:3000/experience.json").then((response) => {
       this.experiences = response.data;
-      console.log("Student Expererience Array", this.experience);
+      console.log("Student Expererience Array", this.experiences);
     });
   },
   methods: {
     updateExperience: function (id) {
       axios
-        .patch("/experience/" + id + ".json")
+        .patch("http://localhost:3000/experience/" + id + ".json", this.experienceParams)
         .then((response) => {
           this.status = response.data;
-          console.log("updated experience", this.status);
+          console.log("updated experience", this.status, id, this.experienceParams);
         })
         .catch((error) => {
           console.log("error", error.response.status, error.response.statusText);
