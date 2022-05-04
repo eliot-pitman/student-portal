@@ -26,16 +26,20 @@ export default {
   },
   methods: {
     destroyExperience: function (id) {
-      axios.delete("http://localhost:3000/experience/" + id).then((response) => {
-        console.log("experience removed", response);
-        this.$router.push("/");
-      });
+      axios
+        .delete("http://localhost:3000/experience/" + id)
+        .then((response) => {
+          console.log("experience removed", response);
+          this.$router.push("/");
+        });
     },
     destroyEducation: function (id) {
-      axios.delete("http://localhost:3000/educations/" + id).then((response) => {
-        console.log("education removed", response);
-        this.$router.push("/");
-      });
+      axios
+        .delete("http://localhost:3000/educations/" + id)
+        .then((response) => {
+          console.log("education removed", response);
+          this.$router.push("/");
+        });
     },
     destroySkill: function (id) {
       axios.delete("http://localhost:3000/skills/" + id).then((response) => {
