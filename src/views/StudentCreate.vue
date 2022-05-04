@@ -45,7 +45,7 @@ export default {
     },
     educationCreate: function () {
       axios
-        .post("http://localhost:3000/education", this.educationParams)
+        .post("http://localhost:3000/educations", this.educationParams)
         .then((response) => {
           this.status = response.data;
           console.log("Education created", this.educationParams);
@@ -57,7 +57,7 @@ export default {
     },
     capstoneCreate: function () {
       axios
-        .post("http://localhost:3000/capstone", this.capstoneParams)
+        .post("http://localhost:3000/capstones", this.capstoneParams)
         .then((response) => {
           this.status = response.data;
           console.log("Capstone created", this.educationParams);
@@ -101,7 +101,7 @@ export default {
   <h1>Add Skill</h1>
   <div>
     Skill:
-    <input type="text" v-model="skillsParams.name" />
+    <input type="text" v-model="skillsParams.skill_name" />
   </div>
 
   <button v-on:click="skillsCreate">Add</button>
