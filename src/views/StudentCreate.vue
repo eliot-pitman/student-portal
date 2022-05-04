@@ -23,7 +23,7 @@ export default {
   methods: {
     experienceCreate: function () {
       axios
-        .post("http://localhost:3000/experience.json", this.experienceParams)
+        .post("http://localhost:3000/experience", this.experienceParams)
         .then((response) => {
           console.log("experience successfully created", response.data, this.experienceParams);
         })
@@ -34,7 +34,7 @@ export default {
     },
     skillsCreate: function () {
       axios
-        .post("/skills", this.skillsParams)
+        .post("http://localhost:3000/skills", this.skillsParams)
         .then((response) => {
           console.log("skills successfully created", response.data, this.skillsParams);
         })
@@ -45,7 +45,7 @@ export default {
     },
     educationCreate: function () {
       axios
-        .post("/education", this.educationParams)
+        .post("http://localhost:3000/education", this.educationParams)
         .then((response) => {
           this.status = response.data;
           console.log("Education created", this.educationParams);
@@ -57,7 +57,7 @@ export default {
     },
     capstoneCreate: function () {
       axios
-        .post("/capstone", this.capstoneParams)
+        .post("http://localhost:3000/capstone", this.capstoneParams)
         .then((response) => {
           this.status = response.data;
           console.log("Capstone created", this.educationParams);
