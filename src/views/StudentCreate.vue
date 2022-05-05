@@ -25,18 +25,10 @@ export default {
       axios
         .post("http://localhost:3000/experience", this.experienceParams)
         .then((response) => {
-          console.log(
-            "experience successfully created",
-            response.data,
-            this.experienceParams
-          );
+          console.log("experience successfully created", response.data, this.experienceParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -44,18 +36,10 @@ export default {
       axios
         .post("http://localhost:3000/skills", this.skillsParams)
         .then((response) => {
-          console.log(
-            "skills successfully created",
-            response.data,
-            this.skillsParams
-          );
+          console.log("skills successfully created", response.data, this.skillsParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -67,11 +51,7 @@ export default {
           console.log("Education created", this.educationParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -83,11 +63,7 @@ export default {
           console.log("Capstone created", this.educationParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
