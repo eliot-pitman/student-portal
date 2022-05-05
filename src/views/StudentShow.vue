@@ -8,19 +8,10 @@ export default {
     };
   },
   created: function () {
-<<<<<<< HEAD
-    axios
-      .get("http://localhost:3000/students/" + this.$route.params.id + ".json")
-      .then((response) => {
-        console.log(response.data);
-        this.student = response.data;
-      });
-=======
     axios.get("http://localhost:3000/students/1.json").then((response) => {
       console.log(response.data);
       this.student = response.data;
     });
->>>>>>> 4fbc601e92be3a96837ab1b89d8338026e90a04e
   },
 };
 </script>
