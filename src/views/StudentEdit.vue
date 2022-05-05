@@ -12,20 +12,33 @@ export default {
       capstoneParams: {},
       status: "",
       error: false,
-      experience: {},
+      experiences: [],
       education: {},
       skill: {},
       capstone: {},
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/students.json").then((response) => {
-      this.students = response.data;
-      console.log("All Students", this.students);
+    axios.get("http://localhost:3000/experience.json").then((response) => {
+      this.experiences = response.data;
+      console.log("Student Expererience Array", this.experience);
     });
   },
   methods: {
+    updateExperience: function (id) {
+      axios
+        .patch("/experience/" + id + ".json")
+        .then((response) => {
+          this.status = response.data;
+          console.log("updated experience", this.status);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
     destroyExperience: function (id) {
+<<<<<<< HEAD
       axios
         .delete("http://localhost:3000/experience/" + id)
         .then((response) => {
@@ -40,17 +53,29 @@ export default {
           console.log("education removed", response);
           this.$router.push("/");
         });
+=======
+      axios.delete("http://localhost:3000/experience/" + id).then((response) => {
+        console.log("experience removed", response);
+        this.$router.push("/edit");
+      });
+    },
+    destroyEducation: function (id) {
+      axios.delete("http://localhost:3000/educations/" + id).then((response) => {
+        console.log("education removed", response);
+        this.$router.push("/edit");
+      });
+>>>>>>> bc9a46e9398c6bc9ff3c7be14294dc79d5419c8a
     },
     destroySkill: function (id) {
       axios.delete("http://localhost:3000/skills/" + id).then((response) => {
         console.log("skill removed", response);
-        this.$router.push("/");
+        this.$router.push("/edit");
       });
     },
     destroyCapstone: function (id) {
       axios.delete("http://localhost:3000/capstones/" + id).then((response) => {
         console.log("capstone removed", response);
-        this.$router.push("/");
+        this.$router.push("/edit");
       });
     },
   },
@@ -58,34 +83,36 @@ export default {
 </script>
 
 <template>
-  <form v-on:submit.prevent="updateExperience()">
-    <h1>Update Experience</h1>
-    <div>
-      Job Title:
-      <input type="text" v-model="experienceParams.job_title" />
-    </div>
-    <div>
-      Company Name:
-      <input type="text" v-model="experienceParams.company_name" />
-    </div>
-    <div>
-      Start Date:
-      <input type="text" v-model="experienceParams.start_date" />
-    </div>
-    <div>
-      End Date:
-      <input type="text" v-model="experienceParams.end_date" />
-    </div>
-    <div>
-      Details:
-      <input type="text" v-model="experienceParams.details" />
-    </div>
+  <div v-for="experience in experiences" :key="experience.id">
+    <form v-on:submit.prevent="updateExperience(experience.id)">
+      <h1>Update Experience</h1>
+      <div>
+        Job Title:
+        <input :placeholder="`${experience.job_title}`" type="text" v-model="experienceParams.job_title" />
+      </div>
+      <div>
+        Company Name:
+        <input :placeholder="`${experience.company_name}`" type="text" v-model="experienceParams.company_name" />
+      </div>
+      <div>
+        Start Date:
+        <input :placeholder="`${experience.start_date}`" type="text" v-model="experienceParams.start_date" />
+      </div>
+      <div>
+        End Date:
+        <input :placeholder="`${experience.end_date}`" type="text" v-model="experienceParams.end_date" />
+      </div>
+      <div>
+        Details:
+        <input :placeholder="`${experience.details}`" type="text" v-model="experienceParams.details" />
+      </div>
 
-    <div>
-      <input type="submit" value="Update" />
-    </div>
-  </form>
-  <button v-on:click="destroyExperience(experience)">Delete experience</button>
+      <div>
+        <input type="submit" value="Update" />
+      </div>
+    </form>
+    <button v-on:click="destroyExperience(experience.id)">Delete experience</button>
+  </div>
 
   <br />
   <form v-on:submit.prevent="updateSkill()">

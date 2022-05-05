@@ -11,7 +11,7 @@ export default {
   methods: {
     submit: function () {
       axios
-        .post("http://localhost:3000/sessions", this.newSessionParams)
+        .post("http://localhost:3000/sessions.json", this.newSessionParams)
         .then((response) => {
           axios.defaults.headers.common["Authorization"] =
             "Bearer " + response.data.jwt;
