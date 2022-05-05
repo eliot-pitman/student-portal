@@ -7,6 +7,7 @@ export default {
       student: {},
       students: [],
       experienceParams: {},
+      studentParams: {},
       skillsParams: {},
       educationParams: {},
       capstoneParams: {},
@@ -61,6 +62,17 @@ export default {
         .then((response) => {
           this.status = response.data;
           console.log("Capstone created", this.educationParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
+    studentCreate: function () {
+      axios
+        .post("http://localhost:3000/students", this.studentParams)
+        .then((response) => {
+          console.log("student successfully created", response.data, this.studentParams);
         })
         .catch((error) => {
           console.log("error", error.response.status, error.response.statusText);
