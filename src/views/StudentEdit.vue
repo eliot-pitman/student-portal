@@ -158,7 +158,7 @@ export default {
           <h3>{{ education.details }}</h3>
         </div>
 
-        <a :href="`/edit/${education.id}`">Edit this</a>
+        <a :href="`/education/${education.id}`">Edit this</a>
       </form>
       <button v-on:click="destroyEducation(education.id)">Delete</button>
       <a href="/create">Add more Education</a>

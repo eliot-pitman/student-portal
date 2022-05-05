@@ -6,6 +6,7 @@ import StudentShow from "../views/StudentShow.vue";
 import StudentCreate from "../views/StudentCreate.vue";
 import StudentEdit from "../views/StudentEdit.vue";
 import ExperienceEdit from "../views/ExperienceEdit.vue";
+import EducationEdit from "../views/EducationEdit.vue";
 
 const routes = [
   {
@@ -50,6 +51,11 @@ const routes = [
     path: "/experience/:id",
     name: "experienceEdit",
     component: ExperienceEdit,
+  },
+  {
+    path: "/education/:id",
+    name: "educationEdit",
+    component: EducationEdit,
   },
 ];
 

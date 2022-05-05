@@ -4,26 +4,26 @@ export default {
   data: function () {
     return {
       data: [],
-      experienceParams: {},
+      educationParams: {},
       skillsParams: {},
       status: "",
       error: false,
-      experience: [],
+      education: [],
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/experience/" + this.$route.params.id + "json").then((response) => {
-      this.experience = response.data;
-      console.log("Student Expererience", this.experience);
+    axios.get("http://localhost:3000/educations/" + this.$route.params.id + ".json").then((response) => {
+      this.education = response.data;
+      console.log("Student Education", this.education);
     });
   },
   methods: {
-    updateExperience: function (id) {
+    updateEducation: function (id) {
       axios
-        .patch("http://localhost:3000/experience/" + id + ".json", this.experienceParams)
+        .patch("http://localhost:3000/educations/" + id + ".json", this.educationParams)
         .then((response) => {
           this.status = response.data;
-          console.log("updated experience", this.status, id, this.experienceParams);
+          console.log("updated education", this.status, id, this.educationParams);
           this.$router.push("/edit");
         })
         .catch((error) => {
@@ -31,9 +31,9 @@ export default {
           this.status = error.response.status;
         });
     },
-    destroyExperience: function (id) {
-      axios.delete("http://localhost:3000/experience/" + id).then((response) => {
-        console.log("experience removed", response);
+    destroyEducation: function (id) {
+      axios.delete("http://localhost:3000/education/" + id).then((response) => {
+        console.log("education removed", response);
         this.$router.push("/edit");
       });
     },
@@ -42,32 +42,5 @@ export default {
 </script>
 
 <template>
-  <form v-on:submit.prevent="updateExperience(experience.id)">
-    <h1>Update Experience</h1>
-    <div>
-      Job Title:
-      <input :placeholder="`${experience.job_title}`" type="text" v-model="experienceParams.job_title" />
-    </div>
-    <div>
-      Company Name:
-      <input :placeholder="`${experience.company_name}`" type="text" v-model="experienceParams.company_name" />
-    </div>
-    <div>
-      Start Date:
-      <input :placeholder="`${experience.start_date}`" type="text" v-model="experienceParams.start_date" />
-    </div>
-    <div>
-      End Date:
-      <input :placeholder="`${experience.end_date}`" type="text" v-model="experienceParams.end_date" />
-    </div>
-    <div>
-      Details:
-      <input :placeholder="`${experience.details}`" type="text" v-model="experienceParams.details" />
-    </div>
-
-    <div>
-      <input type="submit" value="Update" />
-    </div>
-    <button v-on:click="destroyExperience(experience.id)">Delete experience</button>
-  </form>
+  <dir></dir>
 </template>
