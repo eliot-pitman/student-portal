@@ -4,9 +4,11 @@ export default {
   data: function () {
     return {
       data: [],
+      user: [],
       student: {},
       students: [],
       experienceParams: {},
+      studentParams: {},
       skillsParams: {},
       educationParams: {},
       capstoneParams: {},
@@ -15,28 +17,20 @@ export default {
     };
   },
   created: function () {
-    // axios.get("http://localhost:3000/students.json").then((response) => {
-    //   this.students = response.data;
-    //   console.log("All Students", this.students);
-    // });
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      this.user = response.data;
+      console.log("user", this.user);
+    });
   },
   methods: {
     experienceCreate: function () {
       axios
         .post("http://localhost:3000/experience", this.experienceParams)
         .then((response) => {
-          console.log(
-            "experience successfully created",
-            response.data,
-            this.experienceParams
-          );
+          console.log("experience successfully created", response.data, this.experienceParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -44,18 +38,10 @@ export default {
       axios
         .post("http://localhost:3000/skills", this.skillsParams)
         .then((response) => {
-          console.log(
-            "skills successfully created",
-            response.data,
-            this.skillsParams
-          );
+          console.log("skills successfully created", response.data, this.skillsParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -67,11 +53,7 @@ export default {
           console.log("Education created", this.educationParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -83,11 +65,18 @@ export default {
           console.log("Capstone created", this.educationParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
+    studentCreate: function () {
+      axios
+        .post("http://localhost:3000/students", this.studentParams)
+        .then((response) => {
+          console.log("student successfully created", response.data, this.studentParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
