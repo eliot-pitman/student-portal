@@ -65,25 +65,25 @@ export default {
     destroyExperience: function (id) {
       axios.delete("http://localhost:3000/experience/" + id).then((response) => {
         console.log("experience removed", response);
-        this.$router.push("/edit");
+        window.location.reload();
       });
     },
     destroyEducation: function (id) {
       axios.delete("http://localhost:3000/educations/" + id).then((response) => {
         console.log("education removed", response);
-        this.$router.push("/edit");
+        window.location.reload();
       });
     },
     destroySkill: function (id) {
       axios.delete("http://localhost:3000/skills/" + id).then((response) => {
         console.log("skill removed", response);
-        this.$router.push("/edit");
+        window.location.reload();
       });
     },
     destroyCapstone: function (id) {
       axios.delete("http://localhost:3000/capstones/" + id).then((response) => {
         console.log("capstone removed", response);
-        this.$router.push("/edit");
+        window.location.reload();
       });
     },
   },
