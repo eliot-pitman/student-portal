@@ -40,54 +40,33 @@ export default {
   methods: {
     updateExperience: function (id) {
       axios
-        .patch(
-          "http://localhost:3000/experience/" + id + ".json",
-          this.experienceParams
-        )
+        .patch("http://localhost:3000/experience/" + id + ".json", this.experienceParams)
         .then((response) => {
           this.status = response.data;
-          console.log(
-            "updated experience",
-            this.status,
-            id,
-            this.experienceParams
-          );
+          console.log("updated experience", this.status, id, this.experienceParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
     updateSkill: function (id) {
       axios
-        .patch(
-          "http://localhost:3000/skills/" + id + ".json",
-          this.skillsParams
-        )
+        .patch("http://localhost:3000/skills/" + id + ".json", this.skillsParams)
         .then((response) => {
           this.status = response.data;
           console.log("updated skill", this.status, id, this.skillParams);
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
     destroyExperience: function (id) {
-      axios
-        .delete("http://localhost:3000/experience/" + id)
-        .then((response) => {
-          console.log("experience removed", response);
-          this.$router.push("/");
-        });
+      axios.delete("http://localhost:3000/experience/" + id).then((response) => {
+        console.log("experience removed", response);
+        this.$router.push("/");
+      });
     },
     // destroyEducation: function (id) {
     //   axios
@@ -104,12 +83,10 @@ export default {
     //     });
     // },
     destroyEducation: function (id) {
-      axios
-        .delete("http://localhost:3000/educations/" + id)
-        .then((response) => {
-          console.log("education removed", response);
-          window.location.reload();
-        });
+      axios.delete("http://localhost:3000/educations/" + id).then((response) => {
+        console.log("education removed", response);
+        window.location.reload();
+      });
     },
     destroySkill: function (id) {
       axios.delete("http://localhost:3000/skills/" + id).then((response) => {
@@ -154,9 +131,7 @@ export default {
 
       <a :href="`/experience/${experience.id}`">Edit this</a>
 
-      <button v-on:click="destroyExperience(experience.id)">
-        Delete Experience
-      </button>
+      <button v-on:click="destroyExperience(experience.id)">Delete Experience</button>
       <a href="/create">Add more Experience</a>
     </div>
   </div>
