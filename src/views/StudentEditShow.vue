@@ -12,16 +12,16 @@ export default {
       capstoneParams: {},
       status: "",
       error: false,
-      experiences: [],
+      experience: [],
       education: {},
       skill: {},
       capstone: {},
     };
   },
   created: function () {
-    axios.get("http://localhost:3000/experience.json").then((response) => {
-      this.experiences = response.data;
-      console.log("Student Expererience Array", this.experiences);
+    axios.get("http://localhost:3000/experience/" + this.$router.params.id + "json").then((response) => {
+      this.experience = response.data;
+      console.log("Student Expererience", this.experience);
     });
   },
   methods: {
@@ -66,34 +66,34 @@ export default {
 </script>
 
 <template>
-  <div class="card" style="width: 18rem" v-for="experience in experiences" :key="experience.id">
-    <form v-on:submit.prevent="updateExperience(experience.id)">
-      <h1>Update Experience</h1>
-      <div>
-        Job Title:
-        <h3>{{ experience.job_title }}</h3>
-      </div>
-      <div>
-        Company Name:
-        <h3>{{ experience.company_name }}</h3>
-      </div>
-      <div>
-        Start Date:
-        <h3>{{ experience.start_date }}</h3>
-      </div>
-      <div>
-        End Date:
-        <h3>{{ experience.end_date }}</h3>
-      </div>
-      <div>
-        Details:
-        <h3>{{ experience.details }}</h3>
-      </div>
+  <form v-on:submit.prevent="updateExperience(this.experience.id)">
+    <h1>Update Experience</h1>
+    <div>
+      Job Title:
+      <input :placeholder="`${experience.job_title}`" type="text" :v-model="experienceParams.job_title" />
+    </div>
+    <div>
+      Company Name:
+      <input :placeholder="`${experience.company_name}`" type="text" v-model="experienceParams.company_name" />
+    </div>
+    <div>
+      Start Date:
+      <input :placeholder="`${experience.start_date}`" type="text" v-model="experienceParams.start_date" />
+    </div>
+    <div>
+      End Date:
+      <input :placeholder="`${experience.end_date}`" type="text" v-model="experienceParams.end_date" />
+    </div>
+    <div>
+      Details:
+      <input :placeholder="`${experience.details}`" type="text" v-model="experienceParams.details" />
+    </div>
 
-      <a :href="`/edit/${experience.id}`">Edit this</a>
-    </form>
-    <button v-on:click="destroyExperience(experience.id)">Delete experience</button>
-  </div>
+    <div>
+      <input type="submit" value="Update" />
+    </div>
+  </form>
+  <button v-on:click="destroyExperience(experience.id)">Delete experience</button>
 
   <br />
   <form v-on:submit.prevent="updateSkill()">
