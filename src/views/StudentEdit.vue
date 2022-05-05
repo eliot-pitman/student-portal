@@ -115,7 +115,7 @@ export default {
         <h3>{{ experience.details }}</h3>
       </div>
 
-      <a :href="`/edit/${experience.id}`">Edit this</a>
+      <a :href="`/experience/${experience.id}`">Edit this</a>
 
       <button v-on:click="destroyExperience(experience.id)">Delete Experience</button>
       <a href="/create">Add more Experience</a>
