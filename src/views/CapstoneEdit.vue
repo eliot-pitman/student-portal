@@ -11,31 +11,22 @@ export default {
     };
   },
   created: function () {
-    axios
-      .get("http://localhost:3000/capstone/" + this.$route.params.id + "json")
-      .then((response) => {
-        this.capstone = response.data;
-        console.log("Students Capstone", this.capstone);
-      });
+    axios.get("http://localhost:3000/capstone/" + this.$route.params.id + "json").then((response) => {
+      this.capstone = response.data;
+      console.log("Students Capstone", this.capstone);
+    });
   },
   methods: {
     updateCapstone: function (id) {
       axios
-        .patch(
-          "http://localhost:3000/capstone/" + id + ".json",
-          this.capstoneParams
-        )
+        .patch("http://localhost:3000/capstone/" + id + ".json", this.capstoneParams)
         .then((response) => {
           this.status = response.data;
           console.log("updated capstone", this.status, id, this.capstoneParams);
           this.$router.push("/edit");
         })
         .catch((error) => {
-          console.log(
-            "error",
-            error.response.status,
-            error.response.statusText
-          );
+          console.log("error", error.response.status, error.response.statusText);
           this.status = error.response.status;
         });
     },
@@ -54,35 +45,19 @@ export default {
     <h1>Update Capstone</h1>
     <div>
       Name:
-      <input
-        :placeholder="`${capstone.name}`"
-        type="text"
-        v-model="capstoneParams.name"
-      />
+      <input :placeholder="`${capstone.name}`" type="text" v-model="capstoneParams.name" />
     </div>
     <div>
       Description:
-      <input
-        :placeholder="`${capstone.description}`"
-        type="text"
-        v-model="capstoneParams.description"
-      />
+      <input :placeholder="`${capstone.description}`" type="text" v-model="capstoneParams.description" />
     </div>
     <div>
       URL:
-      <input
-        :placeholder="`${capstone.url}`"
-        type="text"
-        v-model="capstoneParams.url"
-      />
+      <input :placeholder="`${capstone.url}`" type="text" v-model="capstoneParams.url" />
     </div>
     <div>
       Screenshot:
-      <input
-        :placeholder="`${capstone.screenshot}`"
-        type="text"
-        v-model="capstoneParams.screenshot"
-      />
+      <input :placeholder="`${capstone.screenshot}`" type="text" v-model="capstoneParams.screenshot" />
     </div>
     <div>
       <input type="submit" value="Update" />

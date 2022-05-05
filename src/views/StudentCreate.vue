@@ -16,12 +16,7 @@ export default {
       error: false,
     };
   },
-  created: function () {
-    axios.get("http://localhost:3000/users.json").then((response) => {
-      this.user = response.data;
-      console.log("user", this.user);
-    });
-  },
+  created: function () {},
   methods: {
     experienceCreate: function () {
       axios
