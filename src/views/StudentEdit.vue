@@ -63,6 +63,22 @@ export default {
         });
     },
     destroyExperience: function (id) {
+<<<<<<< HEAD
+      axios
+        .delete("http://localhost:3000/experience/" + id)
+        .then((response) => {
+          console.log("experience removed", response);
+          this.$router.push("/");
+        });
+    },
+    destroyEducation: function (id) {
+      axios
+        .delete("http://localhost:3000/educations/" + id)
+        .then((response) => {
+          console.log("education removed", response);
+          this.$router.push("/");
+        });
+=======
       axios.delete("http://localhost:3000/experience/" + id).then((response) => {
         console.log("experience removed", response);
         window.location.reload();
@@ -73,6 +89,7 @@ export default {
         console.log("education removed", response);
         window.location.reload();
       });
+>>>>>>> bc9a46e9398c6bc9ff3c7be14294dc79d5419c8a
     },
     destroySkill: function (id) {
       axios.delete("http://localhost:3000/skills/" + id).then((response) => {

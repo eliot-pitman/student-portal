@@ -43,10 +43,18 @@ export default {
       axios
         .post("/experience", this.experienceParams)
         .then((response) => {
-          console.log("experience successfully created", response.data, this.experienceParams);
+          console.log(
+            "experience successfully created",
+            response.data,
+            this.experienceParams
+          );
         })
         .catch((error) => {
-          console.log("error", error.response.status, error.response.statusText);
+          console.log(
+            "error",
+            error.response.status,
+            error.response.statusText
+          );
           this.status = error.response.status;
         });
     },
@@ -54,10 +62,18 @@ export default {
       axios
         .post("/skills", this.skillsParams)
         .then((response) => {
-          console.log("skills successfully created", response.data, this.skillsParams);
+          console.log(
+            "skills successfully created",
+            response.data,
+            this.skillsParams
+          );
         })
         .catch((error) => {
-          console.log("error", error.response.status, error.response.statusText);
+          console.log(
+            "error",
+            error.response.status,
+            error.response.statusText
+          );
           this.status = error.response.status;
         });
     },
