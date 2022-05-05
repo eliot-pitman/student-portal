@@ -13,15 +13,24 @@ export default {
       status: "",
       error: false,
       experiences: [],
-      education: {},
+      educations: [],
       skill: {},
       capstone: {},
+      skills: [],
     };
   },
   created: function () {
     axios.get("http://localhost:3000/experience.json").then((response) => {
       this.experiences = response.data;
       console.log("Student Expererience Array", this.experiences);
+    });
+    axios.get("http://localhost:3000/skills.json").then((response) => {
+      this.skills = response.data;
+      console.log("Student skills Array", this.skills);
+    });
+    axios.get("http://localhost:3000/educations.json").then((response) => {
+      this.educations = response.data;
+      console.log("Student Educations Array", this.educations);
     });
   },
   methods: {
@@ -31,6 +40,18 @@ export default {
         .then((response) => {
           this.status = response.data;
           console.log("updated experience", this.status, id, this.experienceParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
+    updateSkill: function (id) {
+      axios
+        .patch("http://localhost:3000/skills/" + id + ".json", this.skillsParams)
+        .then((response) => {
+          this.status = response.data;
+          console.log("updated skill", this.status, id, this.skillParams);
         })
         .catch((error) => {
           console.log("error", error.response.status, error.response.statusText);
@@ -66,9 +87,9 @@ export default {
 </script>
 
 <template>
-  <div class="card" style="width: 18rem" v-for="experience in experiences" :key="experience.id">
-    <form v-on:submit.prevent="updateExperience(experience.id)">
-      <h1>Update Experience</h1>
+  <h1>Update Experience</h1>
+  <div class="container" v-for="experience in experiences" :key="experience.id">
+    <div class="card-columns card bg-light">
       <div>
         Job Title:
         <h3>{{ experience.job_title }}</h3>
@@ -91,22 +112,53 @@ export default {
       </div>
 
       <a :href="`/edit/${experience.id}`">Edit this</a>
-    </form>
-    <button v-on:click="destroyExperience(experience.id)">Delete experience</button>
-  </div>
 
-  <br />
-  <form v-on:submit.prevent="updateSkill()">
-    <h1>Update Skill</h1>
-    <div>
-      Skill:
-      <input type="text" v-model="skillsParams.name" />
+      <button v-on:click="destroyExperience(experience.id)">Delete Experience</button>
+      <a href="/create">Add to Experience</a>
     </div>
-    <div>
-      <input type="submit" value="Update" />
+  </div>
+  <h1>Update Skills</h1>
+  <div class="container" v-for="skill in skills" :key="skill.id">
+    <div class="card-columns card bg-light">
+      <div>
+        <h3>{{ skill.skill_name }}</h3>
+      </div>
+      <a :href="`/edit/${skill.id}`">Edit this</a>
+
+      <button v-on:click="destroySkill(skill.id)">Delete skill</button>
+      <a href="/create">Add to Skills</a>
     </div>
-  </form>
-  <button v-on:click="destroySkill(skill)">Delete skill</button>
+  </div>
+  <div class="container" v-for="education in educations" :key="education.id">
+    <div class="card-columns card bg-light">
+      <form>
+        <div>
+          Degree:
+          <h3>{{ education.degree }}</h3>
+        </div>
+        <div>
+          University/College:
+          <h3>{{ education.university_name }}</h3>
+        </div>
+        <div>
+          Start Date:
+          <h3>{{ education.start_date }}</h3>
+        </div>
+        <div>
+          End Date:
+          <h3>{{ education.end_date }}</h3>
+        </div>
+        <div>
+          Details:
+          <h3>{{ education.details }}</h3>
+        </div>
+
+        <a :href="`/edit/${education.id}`">Edit this</a>
+      </form>
+      <button v-on:click="destroyEducation(education.id)">Delete</button>
+      <a href="/create">Add to Education</a>
+    </div>
+  </div>
 
   <br />
   <form v-on:submit.prevent="updateEducation()">
