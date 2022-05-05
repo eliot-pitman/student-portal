@@ -4,6 +4,7 @@ export default {
   data: function () {
     return {
       data: [],
+      user: [],
       student: {},
       students: [],
       experienceParams: {},
@@ -16,10 +17,10 @@ export default {
     };
   },
   created: function () {
-    // axios.get("http://localhost:3000/students.json").then((response) => {
-    //   this.students = response.data;
-    //   console.log("All Students", this.students);
-    // });
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      this.user = response.data;
+      console.log("user", this.user);
+    });
   },
   methods: {
     experienceCreate: function () {
