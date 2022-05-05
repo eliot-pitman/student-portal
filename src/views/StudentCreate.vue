@@ -4,9 +4,11 @@ export default {
   data: function () {
     return {
       data: [],
+      user: [],
       student: {},
       students: [],
       experienceParams: {},
+      studentParams: {},
       skillsParams: {},
       educationParams: {},
       capstoneParams: {},
@@ -15,10 +17,10 @@ export default {
     };
   },
   created: function () {
-    // axios.get("http://localhost:3000/students.json").then((response) => {
-    //   this.students = response.data;
-    //   console.log("All Students", this.students);
-    // });
+    axios.get("http://localhost:3000/users.json").then((response) => {
+      this.user = response.data;
+      console.log("user", this.user);
+    });
   },
   methods: {
     experienceCreate: function () {
@@ -61,6 +63,17 @@ export default {
         .then((response) => {
           this.status = response.data;
           console.log("Capstone created", this.educationParams);
+        })
+        .catch((error) => {
+          console.log("error", error.response.status, error.response.statusText);
+          this.status = error.response.status;
+        });
+    },
+    studentCreate: function () {
+      axios
+        .post("http://localhost:3000/students", this.studentParams)
+        .then((response) => {
+          console.log("student successfully created", response.data, this.studentParams);
         })
         .catch((error) => {
           console.log("error", error.response.status, error.response.statusText);
